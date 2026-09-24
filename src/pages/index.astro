@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base page="home" title="Community">
+  <main>
+    <section class="hero">
+      <div class="wrap center">
+        <span data-brand-mark="72"></span>
+        <h1 data-brand-name>Community</h1>
+        <p class="lede">Welcome to <span data-brand-name>Community</span></p>
+        {/* Join, Log in and the feed are your community app: plain links, always. */}
+        <div class="actions">
+          <a class="button" href="/join">Join</a>
+          <a class="button ghost" href="/login">Log in</a>
+          <a class="button link" href="/feeds">Open community →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section" id="latest-posts" hidden>
+      <div class="section-head">
+        <h2>Latest from the blog</h2>
+        <a href="/blog/">All posts →</a>
+      </div>
+      <div class="grid grid-3" id="latest-grid"></div>
+    </section>
+  </main>
+</Base>

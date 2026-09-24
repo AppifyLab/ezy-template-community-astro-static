@@ -1,0 +1,14 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+{/* The list is fetched in the browser; `?page=2` shows older posts. */}
+<Base page="blog" title="Blog">
+  <main class="wrap section">
+    <p class="eyebrow" data-brand-name>Community</p>
+    <h1>Blog</h1>
+    <p class="lede" id="blog-empty" hidden>No posts published yet.</p>
+    <div class="grid grid-3" id="blog-grid"></div>
+    <nav class="pager" id="blog-pager" hidden></nav>
+  </main>
+</Base>

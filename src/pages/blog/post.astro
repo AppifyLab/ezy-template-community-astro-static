@@ -1,0 +1,36 @@
+---
+/**
+ * ONE page for every post: `/blog/post/?slug=<slug>`.
+ *
+ * A static site is built once, before any post exists, so there can be no page
+ * per post (`/blog/<slug>`). This page reads the slug from the address and
+ * fetches the post in the browser. For `/blog/<slug>` addresses, use the Astro
+ * SSR template instead.
+ */
+import Base from '../../layouts/Base.astro';
+---
+
+<Base page="post" title="Blog">
+  <main>
+    <div id="post" hidden>
+      <header class="post-hero" id="post-hero">
+        <div class="wrap center post-hero-inner">
+          <h1 id="post-title"></h1>
+          <p class="post-meta" id="post-meta"></p>
+        </div>
+      </header>
+      <article class="wrap narrow section">
+        <div class="prose" id="post-body"></div>
+        <p class="terms" id="post-terms" hidden></p>
+        <p class="section"><a href="/blog/">← All posts</a></p>
+      </article>
+    </div>
+
+    <div class="wrap narrow section center" id="post-missing" hidden>
+      <p class="eyebrow">404</p>
+      <h1>This post does not exist</h1>
+      <p class="lede">It may have been unpublished, or the link is mistyped.</p>
+      <p><a class="button" href="/blog/">All posts</a></p>
+    </div>
+  </main>
+</Base>

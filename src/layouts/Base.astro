@@ -1,0 +1,57 @@
+---
+/**
+ * Header, footer and <head> for every page. Built once to static HTML: the
+ * brand placeholders below (`data-brand-name`, `data-brand-mark`) are filled in
+ * the browser by src/scripts/site.ts, which every page loads.
+ */
+import '../styles/global.css';
+
+interface Props {
+  /** Which page this is — site.ts reads it from <body data-page>. */
+  page: 'home' | 'blog' | 'post' | '404';
+  /** The tab title before the community name loads. */
+  title: string;
+}
+
+const {page, title} = Astro.props;
+const year = new Date().getUTCFullYear();
+const nav = page === 'post' ? 'blog' : page;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+  </head>
+  <body data-page={page}>
+    <header class="site-header">
+      <div class="wrap site-header-inner">
+        <a href="/" class="brand">
+          <span data-brand-mark="32"></span>
+          <span class="brand-name" data-brand-name>Community</span>
+        </a>
+        <nav class="site-nav">
+          <a href="/" class:list={{active: nav === 'home'}}>Home</a>
+          <a href="/blog/" class:list={{active: nav === 'blog'}}>Blog</a>
+          {/* /feeds is your community app, on this same address: a plain link. */}
+          <a href="/feeds">Community</a>
+        </nav>
+      </div>
+    </header>
+
+    <slot />
+
+    <footer class="site-footer">
+      <div class="wrap site-footer-inner">
+        <span>© <span data-year>{year}</span> <span data-brand-name>Community</span></span>
+        <span class="muted">Powered by EzyCommunity</span>
+      </div>
+    </footer>
+
+    <script>
+      import '../scripts/site';
+    </script>
+  </body>
+</html>
