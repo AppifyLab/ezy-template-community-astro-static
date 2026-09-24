@@ -50,9 +50,9 @@ the visitor's browser by `src/scripts/site.ts`, from your site's own address:
 Edit a post in your dashboard and it shows here on the next visit — no
 redeploy needed.
 
-A static site cannot have one page per post, so a post lives at
-`/blog/post/?slug=<post>`. Want `/blog/<post>` addresses, or pages rendered on
-the server? Use the **Astro SSR** template instead.
+So that a new post shows up without a new build, every post is read by one
+page: `/blog/post/?slug=<post>`. Want `/blog/<post>` addresses, or pages
+rendered on the server? Use the **Astro SSR** template instead.
 
 ## Running it on your machine
 
@@ -89,5 +89,5 @@ Add a page by adding a file to `src/pages/`: `src/pages/team.astro` becomes
 
 ## Getting help
 
-Broke something? Every deploy is kept, so you can redeploy an earlier one from
-your dashboard while you fix it.
+Broke something? Your recent deploys are kept, so you can redeploy an earlier one
+from your dashboard while you fix it.
