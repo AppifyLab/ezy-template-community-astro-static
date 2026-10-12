@@ -57,13 +57,18 @@ True for any code on an EzyCommunity Site, not only this Template:
   (the dashboard lists it as a shadowed path). Link to App pages with a plain
   `<a href>`.
 - **Community data comes only from its public API on its own hostname**
-  (`/api/public/...`): server code builds the URL from `EZY_SITE_URL` (the
-  only environment variable), browser code uses relative URLs. Deployed server
-  code can reach no other host. Data fetched during the Build is frozen until
-  the next Build (a Redeploy reuses the old output) — fetch at request time or
-  in the browser.
-- **There are no secrets.** No secret store exists: never put keys, tokens or
-  passwords in code, `.env` or config — assume anything in the project can end
-  up public. Never send a member's email address to the browser.
+  (`/api/public/...`): server code builds the URL from `EZY_SITE_URL` (a plain
+  variable, not a secret), browser code uses relative URLs. Deployed server
+  code reaches only that hostname and its Site Database. Data fetched during
+  the Build is frozen until the next Build (a Redeploy reuses the old output)
+  — fetch at request time or in the browser.
+- **This site is frontend-only: no secret ever reaches it.** It has no server
+  code, so the platform's Worker secrets (`DATABASE_URL`, `EZY_COMMUNITY_KEY`)
+  are never given to it, and everything in it is served to the browser: never
+  put a key, token or password in code, `.env` or config, never ask the owner
+  for one. Never send a member's email address to the browser.
+- **No backend here.** A Site API (`/site-api/*`) and a Site Database need
+  server code: start from the Astro app Template
+  (`AppifyLab/ezy-template-community-astro-app`) instead.
 - **No deploy config.** Don't commit `wrangler.*`: the platform writes the
   Worker config and drops any KV, R2, D1 or other binding.
