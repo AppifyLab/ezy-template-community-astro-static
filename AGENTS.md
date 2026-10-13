@@ -39,6 +39,21 @@ plain `<a href>`.
   origin, and `404.html` is served at arbitrary depths.
 - No `.github/workflows/` — the site deploys from the platform, not Actions.
 
+## Current platform rules (read first)
+
+This starter's notes are frozen at its tag; the platform's rules are not. Before
+changing anything, fetch the live rules for this site and follow them over this
+file:
+
+- `https://<your site's hostname>/api/public/site/v1/agent-docs` — the core rules
+  and the list of topic docs
+- `https://<your site's hostname>/api/public/site/v1/agent-docs/<topic>.md` — read
+  the topic that fits the work (e.g. `auth.md`, `public-api.md`,
+  `community-key.md`, `uploads.md`, `site-database.md`); `changes.md` lists what
+  is new.
+
+Inside the EzyCommunity editor the same docs are at `/opt/ezy/docs/<topic>.md`.
+
 ## Platform rules
 
 True for any code on an EzyCommunity Site, not only this Template:
